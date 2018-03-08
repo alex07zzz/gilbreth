@@ -2,7 +2,7 @@ env_param:
   lift_distance: 0.1
   drop_distance: 0.2
   conveyor_velocity: 0.2
-  conveyor_power: 0.5
+  conveyor_power: 0.6
   conveyor_belt_length: 2.8
 
 pose_timer:

@@ -11,10 +11,10 @@
   <arg name="terminal_cmd" value="" unless="$(arg spawn_window)"/>
 
   <!-- Robot Trajectory Execution -->
-  <node name="robot_execution" type="robot_execution.py" pkg="gilbreth_grasp_planning" launch-prefix="$(arg terminal_cmd)" output="screen"/>
+  <node name="robot_execution" type="robot_execution2.py" pkg="gilbreth_grasp_planning" launch-prefix="$(arg terminal_cmd)" output="screen"/>
 
   <!-- Trajectory Planning -->
-  <node name="trajectory_planning_node" type="trajectory_planner.py" pkg="gilbreth_grasp_planning" launch-prefix="$(arg terminal_cmd)" output="screen"/>
+  <!--node name="trajectory_planning_node" type="trajectory_planner.py" pkg="gilbreth_grasp_planning" launch-prefix="$(arg terminal_cmd)" output="screen"/-->
 
   <!-- Tool Pose Planning -->
   <rosparam command="load" file="$(find gilbreth_grasp_planning)/config/tool_plan_param.yaml" ns="gilbreth/tool_plan"/>    
