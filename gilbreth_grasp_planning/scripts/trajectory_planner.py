@@ -16,12 +16,11 @@ from moveit_msgs.msg import RobotState
 from std_msgs.msg import Duration
 
 # Global variables (don't do this at home)
-ARM_GROUP_NAME = 'robot_rail'
-#ROBOT_GROUP_NAME = 'robot_rail'
+ARM_GROUP_NAME = 'robot'
+ROBOT_GROUP_NAME = 'robot_rail'
 MOVEIT_PLANNING_SERVICE = 'plan_kinematic_path'
 
 def waitForMoveGroup(wait_time = 10.0):
-
   ready = False
   try:
     rospy.wait_for_service(MOVEIT_PLANNING_SERVICE,wait_time)
