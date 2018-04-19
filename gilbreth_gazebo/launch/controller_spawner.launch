@@ -5,6 +5,7 @@
     <arg name="console_output" value="true"/>
   </include>
 
+  <node name="kinect_publisher" pkg="gilbreth_perception" type="kinect_publisher"/>
   <rosparam command="load" file="$(find gilbreth_gazebo)/config/joint_state_controller.yaml"/>
   <rosparam command="load" file="$(find gilbreth_gazebo)/config/robot_rail_controller.yaml"/>
   <rosparam command="load" file="$(find gilbreth_gazebo)/config/robot_controller.yaml"/>
