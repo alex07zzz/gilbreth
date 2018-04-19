@@ -36,6 +36,7 @@
 #include <tf/transform_listener.h>
 #include <XmlRpcException.h>
 #include <boost/format.hpp>
+#include <std_msgs/Float64.h>
 
 typedef pcl::PointXYZ PointType;
 typedef pcl::Normal NormalType;
@@ -75,7 +76,7 @@ public:
 
     cloud_subs_= nh_.subscribe<sensor_msgs::PointCloud2>("segmentation_result", 1, &RecognitionClass::cloudCallBack, this);
     pub_tf = nh_.advertise<gilbreth_msgs::ObjectDetection>("recognition_result_world", 10);
-
+    dur_pub = nh_.advertise<std_msgs::Float64>("recognition_time", 10);
     return true;
   }
 
@@ -459,6 +460,9 @@ public:
 
     duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
     ROS_INFO_STREAM("runtime is " << duration << " seconds.");
+    std_msgs::Float64 dur;
+    dur.data = duration;
+    dur_pub.publish(dur);
 
     if (min_index == -1) {
       ROS_ERROR_STREAM("-----------------------------");
@@ -556,6 +560,7 @@ private:
 
   ros::NodeHandle nh_;
   ros::Publisher pub_tf;
+  ros::Publisher dur_pub;
   ros::Subscriber cloud_subs_;
 
   // recognition data structures

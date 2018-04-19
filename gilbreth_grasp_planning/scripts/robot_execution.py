@@ -9,6 +9,7 @@ import moveit_msgs.msg
 import geometry_msgs.msg
 import copy
 import time
+import setproctitle
 
 from gilbreth_msgs.msg import RobotTrajectories
 from gilbreth_msgs.msg import TargetToolPoses
@@ -274,6 +275,7 @@ class RobotExecution:
 
 def main(args):
     moveit_commander.roscpp_initialize(sys.argv)
+    setproctitle.setproctitle('robot_execution')
     rospy.init_node('robot_execution',anonymous=True)
     rate = rospy.Rate(10)
 

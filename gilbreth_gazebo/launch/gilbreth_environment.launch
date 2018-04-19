@@ -4,7 +4,7 @@
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
-  <arg name="gui" default="true"/>
+  <arg name="gui" default="false"/>
   <arg name="rviz" default = "false"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
@@ -24,9 +24,9 @@
   </include>
 
   <!-- Load the URDF into the ROS Parameter Server -->
-  <include file="$(find gilbreth_moveit_config)/launch/move_group.launch">
+  <!--include file="$(find gilbreth_moveit_config)/launch/move_group.launch">
     <arg name="console_output" value="true"/>
-  </include>
+  </include-->
   <include file="$(find gilbreth_support)/launch/load_gilbreth.launch"/>
 
   <!-- Spawn the URDF objects into Gazebo -->
@@ -37,14 +37,15 @@
     <rosparam command="load" file="$(find gilbreth_gazebo)/config/conveyor_objects.yaml"/>
   </node>
 
+<!--
   <rosparam command="load" file="$(find gilbreth_gazebo)/config/joint_state_controller.yaml"/>
   <rosparam command="load" file="$(find gilbreth_gazebo)/config/robot_rail_controller.yaml"/>
   <rosparam command="load" file="$(find gilbreth_gazebo)/config/robot_controller.yaml"/>
   <node name="gilbreth_controller_spawner" pkg="controller_manager" type="spawner"
     args="joint_state_controller robot_rail_controller"/>
   <node name="gilbreth_controller_spawner2" pkg="controller_manager" type="spawner"
-    args="--stopped robot_controller"/>
+    args="- -stopped robot_controller"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-
+-->
   <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find gilbreth_support)/config/gilbreth.rviz"/>
 </launch>

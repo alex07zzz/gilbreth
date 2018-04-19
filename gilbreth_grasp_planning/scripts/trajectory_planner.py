@@ -9,7 +9,7 @@ import moveit_commander
 import moveit_msgs.msg
 import geometry_msgs.msg
 import time
-
+import setproctitle   
 from gilbreth_msgs.msg import TargetToolPoses
 from gilbreth_msgs.msg import RobotTrajectories
 from moveit_msgs.msg import RobotState

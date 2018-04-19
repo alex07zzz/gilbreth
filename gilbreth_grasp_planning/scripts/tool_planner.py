@@ -5,6 +5,7 @@ import time
 import copy
 from gilbreth_msgs.msg import ObjectDetection
 from gilbreth_msgs.msg import TargetToolPoses
+import setproctitle
 
 TOOL_POSE_TOPIC='/gilbreth/target_tool_poses'
 OBJ_DETECTION_TOPIC = '/recognition_result_world'
@@ -113,6 +114,7 @@ class ToolPlanner():
 if __name__ == '__main__':
     try:    
         rospy.init_node('tool_planning_node')
+        setproctitle.setproctitle('tool_planner')    
         rate = rospy.Rate(10)
         planning_properties = PlanningProperties()
         if planning_properties.SUCCESS:
