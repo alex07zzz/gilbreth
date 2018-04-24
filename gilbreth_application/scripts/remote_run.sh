@@ -6,5 +6,3 @@ rosservice call /gilbreth/conveyor/control "state:
 echo "Start Spawning Objects"
 rosservice call /start_spawn
 
-rosrun gilbreth_perception kinect_publisher > /dev/null
-
