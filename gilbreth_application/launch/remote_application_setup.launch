@@ -9,6 +9,7 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name="physics" default="ode"/>
+  <arg name="object_config_file" default="$(find gilbreth_gazebo)/config/conveyor_objects.yaml"/>
   
   <arg name="extra_gazebo_args" default="--verbose"/>
 
@@ -22,6 +23,7 @@
     <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
     <arg name="physics" default="$(arg physics)"/>
     <arg name="rviz" default = "$(arg rviz)"/>
+    <arg name="object_config_file" default="$(arg object_config_file)"/>
   </include>
 
     
